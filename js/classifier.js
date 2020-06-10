@@ -9,11 +9,12 @@ function Init() {
         box.type = "checkbox"
         box.className = "checkbox checkbox-" + (i+1)
         box.setAttribute("data", LABELS[i].label)
-        box.onclick = function() {
-            if (!MULTICLASS)
-                Reset()
 
-            this.checked = true
+        box.onclick = function() {
+            if (!MULTICLASS) {
+                Reset()
+                this.checked = true;
+            }
         }
 
         if (LABELS[i].checked != undefined) {

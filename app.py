@@ -68,7 +68,7 @@ def make_classifier(task_id, title, image, default_label, multiclass):
                 </div>
             </div>
 
-            <script src="js/classifier.js?v=9"></script>        
+            <script src="js/classifier.js?v=15"></script>
             <script> 
                 const MULTICLASS = {multiclass};
                 const TASK_ID = {task_id};
