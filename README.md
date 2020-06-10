@@ -26,7 +26,8 @@ Implementation of images classifier in JS and Flask
   "result_key": "labeled",
   "output_path": "labeled_tasks.json",
   "instruction": "Type some <b>hypertext</b> for label experts!",
-  "templates_dir": "examples"
+  "templates_dir": "examples",
+  "confirm_required": false
 }
 ```
 ## Config format
@@ -53,3 +54,5 @@ Implementation of images classifier in JS and Flask
 ```instruction``` — html content with instruction
 
 ```templates_dir``` — not used now
+
+```confirm_required``` — require confirmation for save or not

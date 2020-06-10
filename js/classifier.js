@@ -83,5 +83,6 @@ function Save() {
         if (labels[i].checked)
             result.push(LABELS[i].label)
 
-    window.location.replace('/save?labels=' + result.join(";") + "&task_id=" + TASK_ID)
+    if (!REQUIRE_CONFIRMATION || confirm("Saving: are you sure?"))
+        window.location.replace('/save?labels=' + result.join(";") + "&task_id=" + TASK_ID)
 }

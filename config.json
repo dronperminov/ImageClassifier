@@ -21,5 +21,6 @@
   "result_key": "labeled",
   "output_path": "labeled_tasks.json",
   "instruction": "Type some <b>hypertext</b> for label experts!",
-  "templates_dir": "examples"
+  "templates_dir": "examples",
+  "confirm_required": false
 }

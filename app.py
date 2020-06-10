@@ -68,10 +68,11 @@ def make_classifier(task_id, title, image, default_label, multiclass):
                 </div>
             </div>
 
-            <script src="js/classifier.js?v=15"></script>
+            <script src="js/classifier.js?v=16"></script>
             <script> 
                 const MULTICLASS = {multiclass};
                 const TASK_ID = {task_id};
+                const REQUIRE_CONFIRMATION = {confirm_required};
                 const LABELS = [{labels}]
                 Init()
             </script>
@@ -82,6 +83,7 @@ def make_classifier(task_id, title, image, default_label, multiclass):
         instruction=config["instruction"],
         multiclass=("true" if multiclass else "false"),
         task_id=task_id,
+        confirm_required=("true" if config["confirm_required"] else "false"),
         labels=",".join(labels))
 
 def get_by_key_list(task, keys):
