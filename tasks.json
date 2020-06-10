@@ -1,0 +1,990 @@
+{
+  "0": {
+    "task_path": "images/img_000.jpg",
+    "id": 0,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "raw_text"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 0
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 0,
+        "text": " ",
+        "bbox": {
+          "height": 199,
+          "y_lower_left": 72,
+          "width": 225,
+          "x_lower_left": 796
+        },
+        "label": "raw_text",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_000.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "1": {
+    "task_path": "images/img_001.jpg",
+    "id": 1,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "header"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 1
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 1,
+        "text": "ВОРОНЕЖСКАЯ ОБЛАСТЬ",
+        "bbox": {
+          "height": 51,
+          "y_lower_left": 342,
+          "width": 878,
+          "x_lower_left": 483
+        },
+        "label": "header",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_001.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "2": {
+    "task_path": "images/img_002.jpg",
+    "id": 2,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "header"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 2
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 2,
+        "text": "ЗАКОН",
+        "bbox": {
+          "height": 56,
+          "y_lower_left": 469,
+          "width": 238,
+          "x_lower_left": 794
+        },
+        "label": "header",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_002.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "3": {
+    "task_path": "images/img_003.jpg",
+    "id": 3,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "header"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 3
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 3,
+        "text": "О ВНЕСЕНИИ ИЗМЕНЕНИЯ В СТАТЬЮ 4",
+        "bbox": {
+          "height": 29,
+          "y_lower_left": 631,
+          "width": 785,
+          "x_lower_left": 529
+        },
+        "label": "header",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_003.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "4": {
+    "task_path": "images/img_004.jpg",
+    "id": 4,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "header"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 4
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 4,
+        "text": "ЗАКОНА ВОРОНЕЖСКОЙ ОБЛАСТИ «О",
+        "bbox": {
+          "height": 36,
+          "y_lower_left": 669,
+          "width": 763,
+          "x_lower_left": 540
+        },
+        "label": "header",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_004.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "5": {
+    "task_path": "images/img_005.jpg",
+    "id": 5,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "header"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 5
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 5,
+        "text": "ЛИЧНОМ ПОДСОБНОМ ХОЗЯЙСТВЕ В",
+        "bbox": {
+          "height": 40,
+          "y_lower_left": 714,
+          "width": 752,
+          "x_lower_left": 545
+        },
+        "label": "header",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_005.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "6": {
+    "task_path": "images/img_006.jpg",
+    "id": 6,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "header"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 6
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 6,
+        "text": "ВОРОНЕЖСКОЙ ОБЛАСТИ»",
+        "bbox": {
+          "height": 36,
+          "y_lower_left": 758,
+          "width": 546,
+          "x_lower_left": 649
+        },
+        "label": "header",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_006.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "7": {
+    "task_path": "images/img_007.jpg",
+    "id": 7,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "header"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 7
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 7,
+        "text": "Принят областной Думой 3 декабря 2019 года",
+        "bbox": {
+          "height": 37,
+          "y_lower_left": 891,
+          "width": 766,
+          "x_lower_left": 388
+        },
+        "label": "header",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_007.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "8": {
+    "task_path": "images/img_008.jpg",
+    "id": 8,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "raw_text"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 8
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 8,
+        "text": "Статья 1",
+        "bbox": {
+          "height": 27,
+          "y_lower_left": 1021,
+          "width": 154,
+          "x_lower_left": 389
+        },
+        "label": "raw_text",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_008.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "9": {
+    "task_path": "images/img_009.jpg",
+    "id": 9,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "title"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 9
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 9,
+        "text": "Внести в пункт 2 статьи 4 Закона Воронежской области от 6 октября",
+        "bbox": {
+          "height": 38,
+          "y_lower_left": 1082,
+          "width": 1162,
+          "x_lower_left": 388
+        },
+        "label": "title",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_009.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "10": {
+    "task_path": "images/img_010.jpg",
+    "id": 10,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "raw_text"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 10
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 10,
+        "text": "2011 года № 127-ОЗ «О личном подсобном хозяйстве в Воронежской об-",
+        "bbox": {
+          "height": 38,
+          "y_lower_left": 1126,
+          "width": 1258,
+          "x_lower_left": 292
+        },
+        "label": "raw_text",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_010.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "11": {
+    "task_path": "images/img_011.jpg",
+    "id": 11,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "title"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 11
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 11,
+        "text": "ласти» (Молодой коммунар, 2011, 8 октября; информационная система",
+        "bbox": {
+          "height": 38,
+          "y_lower_left": 1170,
+          "width": 1260,
+          "x_lower_left": 291
+        },
+        "label": "title",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_011.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "12": {
+    "task_path": "images/img_012.jpg",
+    "id": 12,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "title"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 12
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 12,
+        "text": "«Портал Воронежской области в сети Интернет» (улу\\.воуутп.ги), 2014,",
+        "bbox": {
+          "height": 37,
+          "y_lower_left": 1215,
+          "width": 1257,
+          "x_lower_left": 292
+        },
+        "label": "title",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_012.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "13": {
+    "task_path": "images/img_013.jpg",
+    "id": 13,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "title"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 13
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 13,
+        "text": "2 декабря) изменение, дополнив его после слов «а также для возведения",
+        "bbox": {
+          "height": 37,
+          "y_lower_left": 1258,
+          "width": 1259,
+          "x_lower_left": 291
+        },
+        "label": "title",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_013.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "14": {
+    "task_path": "images/img_014.jpg",
+    "id": 14,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "title"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 14
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 14,
+        "text": "жилого дома» словами «(параметры которого должны соответствовать па-",
+        "bbox": {
+          "height": 36,
+          "y_lower_left": 1305,
+          "width": 1258,
+          "x_lower_left": 291
+        },
+        "label": "title",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_014.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "15": {
+    "task_path": "images/img_015.jpg",
+    "id": 15,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "title"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 15
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 15,
+        "text": "раметрам объекта индивидуального жилищного строительства, указанным",
+        "bbox": {
+          "height": 39,
+          "y_lower_left": 1348,
+          "width": 1260,
+          "x_lower_left": 290
+        },
+        "label": "title",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_015.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "16": {
+    "task_path": "images/img_016.jpg",
+    "id": 16,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "title"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 16
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 16,
+        "text": "в пункте 39 статьи 1 Градостроительного кодекса Российской Федера-",
+        "bbox": {
+          "height": 39,
+          "y_lower_left": 1393,
+          "width": 1258,
+          "x_lower_left": 291
+        },
+        "label": "title",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_016.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "17": {
+    "task_path": "images/img_017.jpg",
+    "id": 17,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "raw_text"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 17
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 17,
+        "text": "ции)».",
+        "bbox": {
+          "height": 34,
+          "y_lower_left": 1436,
+          "width": 100,
+          "x_lower_left": 291
+        },
+        "label": "raw_text",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_017.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "18": {
+    "task_path": "images/img_018.jpg",
+    "id": 18,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "item"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 18
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 18,
+        "text": "Статья 2",
+        "bbox": {
+          "height": 28,
+          "y_lower_left": 1497,
+          "width": 155,
+          "x_lower_left": 389
+        },
+        "label": "item",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_018.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "19": {
+    "task_path": "images/img_019.jpg",
+    "id": 19,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "title"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 19
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 19,
+        "text": "Настоящий Закон Воронежской области вступает в силу по истече-",
+        "bbox": {
+          "height": 37,
+          "y_lower_left": 1559,
+          "width": 1162,
+          "x_lower_left": 387
+        },
+        "label": "title",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_019.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "20": {
+    "task_path": "images/img_020.jpg",
+    "id": 20,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "title"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 20
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 20,
+        "text": "нии 10 дней со дня его официального опубликования.",
+        "bbox": {
+          "height": 37,
+          "y_lower_left": 1602,
+          "width": 893,
+          "x_lower_left": 291
+        },
+        "label": "title",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_020.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "21": {
+    "task_path": "images/img_021.jpg",
+    "id": 21,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "part"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 21
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 21,
+        "text": "Губернатор Воронежской области новое, А.В. Гусев",
+        "bbox": {
+          "height": 52,
+          "y_lower_left": 1772,
+          "width": 1259,
+          "x_lower_left": 290
+        },
+        "label": "part",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_021.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "22": {
+    "task_path": "images/img_022.jpg",
+    "id": 22,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "part"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 22
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 22,
+        "text": "04.18.2019",
+        "bbox": {
+          "height": 27,
+          "y_lower_left": 1826,
+          "width": 195,
+          "x_lower_left": 289
+        },
+        "label": "part",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_022.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "23": {
+    "task_path": "images/img_023.jpg",
+    "id": 23,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "item"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 23
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 23,
+        "text": "150-03",
+        "bbox": {
+          "height": 26,
+          "y_lower_left": 1872,
+          "width": 115,
+          "x_lower_left": 291
+        },
+        "label": "item",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_023.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "24": {
+    "task_path": "images/img_024.jpg",
+    "id": 24,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "part"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 24
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 24,
+        "text": "г. Воронеж",
+        "bbox": {
+          "height": 36,
+          "y_lower_left": 1922,
+          "width": 183,
+          "x_lower_left": 291
+        },
+        "label": "part",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_024.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  },
+  "25": {
+    "task_path": "images/img_025.jpg",
+    "id": 25,
+    "predictions": [
+      {
+        "result": [
+          {
+            "type": "choices",
+            "value": {
+              "choices": [
+                "raw_text"
+              ]
+            },
+            "id": "UtdEoBaQU2",
+            "to_name": "img",
+            "from_name": "choice"
+          }
+        ],
+        "id": 25
+      }
+    ],
+    "data": {
+      "bbox": {
+        "line_num": 25,
+        "text": "новое, ",
+        "bbox": {
+          "height": 226,
+          "y_lower_left": 1685,
+          "width": 226,
+          "x_lower_left": 1022
+        },
+        "label": "raw_text",
+        "page_num": 0
+      },
+      "image_url": "http://localhost:8200/data/img_025.jpg?d=/tmp/task_c8c090a8-ab0f-11ea-a918-b42e99d2ac06/images",
+      "original_image_name": "img_000001_00.png"
+    }
+  }
+}

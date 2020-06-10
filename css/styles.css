@@ -1,0 +1,82 @@
+.classifier {
+    display: table;
+}
+
+.classifier-img {
+    display: table-cell;
+    border: 1px solid #000;
+    vertical-align: top
+}
+
+.classifier-img img {
+    max-width: 100%
+}
+
+.classifier-controls {
+    display: table-cell;
+    padding: 0 10px;
+    font-size: 19px;
+}
+
+.classifier-controls .text {
+    text-align: left;
+}
+
+.classifier-controls .text ul {
+    margin: 0;
+    padding-left: 20px
+}
+
+.classifier-info {
+    display: table-cell;
+    width: 50%;
+    padding: 0 10px;
+    vertical-align: top;
+    text-align: center;
+}
+
+.classifier-info h2 {
+    margin-top: 0;
+}
+
+.button {
+    border: 2px solid #000;
+    display: inline-block;
+    padding: 5px 10px;
+    min-width: 90px;
+    max-width: 90px;
+    margin-top: 0;
+    margin-bottom: 10px
+}
+
+.button:hover {
+    border: 2px solid #ffbc00;
+    cursor: pointer;
+    color: #ffbc00;
+}
+
+.checkbox {
+    visibility: hidden;
+    margin: 0;
+    height: 100%;
+    width: 114px;
+}
+
+.checkbox:after {
+    font-size: 19px;
+    width: 90px;
+    text-align: center;
+    border: 2px solid #000;
+    display: inline-block;
+    padding: 5px 10px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    content: attr(data);
+    visibility: visible;
+}
+
+.checkbox:hover:after, .checkbox:checked:after {
+    border: 2px solid #ffbc00;
+    cursor: pointer;
+    color: #ffbc00;
+}

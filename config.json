@@ -1,0 +1,25 @@
+{
+  "title": "Some title",
+  "port": 5000,
+  "debug": false,
+  "labels": {
+      "raw_text": "#f00",
+      "header": "#0f0",
+      "title": "ff1500",
+      "item": "#00f",
+      "footer": "#00f080",
+      "article": "#00f",
+      "part": "#00f",
+      "subitem": "#00f",
+      "struct_unit": "#00f",
+      "Other": "#00f"
+  },
+  "multiclass": true,
+  "input_path": "tasks.json",
+  "image_key": ["task_path"],
+  "default_label_key": ["data", "bbox", "label"],
+  "result_key": "labeled",
+  "output_path": "labeled_tasks.json",
+  "instruction": "Type some <b>hypertext</b> for label experts!",
+  "templates_dir": "examples"
+}
