@@ -25,7 +25,7 @@ Result tasks saved to ```output_path``` output path defined in ```config.json```
   "debug": false,
   "labels": [
     { "label": "raw_text", "color": "#f00" },
-    { "label": "header", "color": "#0f0" },
+    { "label": "header", "color": "#0f0", "html": "<span class='fa fa-header'></span> header" },
     { "label": "title", "color": "ff1500" },
     { "label": "item", "color": "#00f" },
     { "label": "footer", "color": "#00f080" },
@@ -75,6 +75,11 @@ Result tasks saved to ```output_path``` output path defined in ```config.json```
 ```confirm_required``` — require confirmation for save or not
 
 ```sampling``` — sampling mode for getting task (random or sequential)
+
+## Labels item format
+* label — name of class (not HTML)
+* color — border and text color while button is pressed
+* html — (optional) html content for button, for example icon: ```"html": "<span class='fa fa-header'></span> header"```
 
 ## Colors format of labels
 * hex format — ```#ff00ff```

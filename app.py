@@ -15,6 +15,7 @@ app = Flask(__name__)
 app.config['IMG_FOLDER'] = 'images' # папка с изобрвжениями
 app.config['JS_FOLDER'] = 'js' # папка с js кодом
 app.config['CSS_FOLDER'] = 'css' # папка со стилями
+app.config['FONTS_FOLDER'] = 'fonts' # папка со стилями
 
 @app.route('/images/<filename>')
 def image_file(filename):
@@ -28,16 +29,23 @@ def js_file(filename):
 def css_file(filename):
     return send_from_directory(app.config['CSS_FOLDER'], filename)
 
+@app.route('/fonts/<filename>')
+def font_file(filename):
+    return send_from_directory(app.config['FONTS_FOLDER'], filename)
+
 def make_classifier(task_id, title, image, default_label, multiclass):
     labels = []
 
     for label_info in config["labels"]:
         label = label_info["label"]
         color = label_info.get("color", "")
+        html = label_info.get("html", label)
+
         label_str = "label: \"" + label + "\""
         color_str = "" if color == "" else ", color: \"" + color + "\""
+        html_str = "" if html == "" else ", html: \"" + html + "\""
         checked_str = ", checked: true" if label == default_label else ""
-        labels.append("{" + label_str + color_str + checked_str + " }")
+        labels.append("{" + label_str + color_str + checked_str + html_str + " }")
 
     return '''
         <!DOCTYPE html>
@@ -45,6 +53,7 @@ def make_classifier(task_id, title, image, default_label, multiclass):
         <head>
             <title>{title}</title>
             <link rel="stylesheet" type="text/css" href="css/styles.css?v=2">
+            <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
         </head>
         <body>
             <div class="classifier">
@@ -70,7 +79,7 @@ def make_classifier(task_id, title, image, default_label, multiclass):
                 </div>
             </div>
 
-            <script src="js/classifier.js?v=19"></script>
+            <script src="js/classifier.js?v=20"></script>
             <script> 
                 const MULTICLASS = {multiclass};
                 const TASK_ID = {task_id};

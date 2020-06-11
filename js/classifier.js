@@ -5,6 +5,7 @@ function Classifier(labels) {
     for (let i = 0; i < labels.length; i++) {
         this.labels.push({
             label: labels[i].label,
+            html: labels[i].html,
             color: labels[i].color,
             state: labels[i].checked != undefined,
             box: null,
@@ -43,7 +44,7 @@ Classifier.prototype.InitBoxes = function() {
         this.labels[i].box = document.createElement("div")
 
         this.labels[i].box.className = "button checkbox"
-        this.labels[i].box.innerHTML = this.labels[i].label
+        this.labels[i].box.innerHTML = this.labels[i].html
 
         let classifier = this
 
