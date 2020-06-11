@@ -27,7 +27,8 @@ Implementation of images classifier in JS and Flask
   "output_path": "labeled_tasks.json",
   "instruction": "Type some <b>hypertext</b> for label experts!",
   "templates_dir": "examples",
-  "confirm_required": false
+  "confirm_required": false,
+  "sampling": "sequential"
 }
 ```
 ## Config format
@@ -56,3 +57,5 @@ Implementation of images classifier in JS and Flask
 ```templates_dir``` — not used now
 
 ```confirm_required``` — require confirmation for save or not
+
+```sampling``` — sampling mode for getting task (random or sequential)
