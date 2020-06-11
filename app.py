@@ -121,7 +121,11 @@ def classify_image():
     if len(available_tasks) == 0: # если их нет, то и размечать нечего
         return "Размечать нечего"
 
-    task = random.choice(available_tasks)
+    if config["sampling"] == "random":
+        task = random.choice(available_tasks)
+    else: #  config["sampling"] == "sequential":
+        task = available_tasks[0]
+
     title = "Lost: " + str(len(available_tasks)) + " | " + config["title"]
     return make_classifier(task["id"], title, task["img"], task["label"], config["multiclass"])
 
