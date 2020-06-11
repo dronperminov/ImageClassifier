@@ -43,6 +43,10 @@ function Init() {
         }
     }
 
+    let li = document.createElement("li")
+    li.innerHTML = "Enter - save"
+    keys.appendChild(li)
+
     document.getElementsByTagName('head')[0].appendChild(style);
 }
 
@@ -56,6 +60,11 @@ function Reset() {
 
 // обработка нажатия кнопок
 document.addEventListener('keydown', function(e) {
+    if (e.key == "Enter") {
+        Save()
+        return
+    }
+
     let index = parseInt(e.key)
     let labels = document.getElementsByClassName("checkbox")
     
