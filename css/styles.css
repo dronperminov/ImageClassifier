@@ -41,42 +41,19 @@
 }
 
 .button {
+    user-select: none;
+    font-size: 19px;
     border: 2px solid #000;
     display: inline-block;
     padding: 5px 10px;
     min-width: 90px;
     max-width: 90px;
     margin-top: 0;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .button:hover {
-    border: 2px solid #ffbc00;
-    cursor: pointer;
-    color: #ffbc00;
-}
-
-.checkbox {
-    visibility: hidden;
-    margin: 0;
-    height: 100%;
-    width: 114px;
-}
-
-.checkbox:after {
-    font-size: 19px;
-    width: 90px;
-    text-align: center;
-    border: 2px solid #000;
-    display: inline-block;
-    padding: 5px 10px;
-    margin-top: 0;
-    margin-bottom: 5px;
-    content: attr(data);
-    visibility: visible;
-}
-
-.checkbox:hover:after, .checkbox:checked:after {
     border: 2px solid #ffbc00;
     cursor: pointer;
     color: #ffbc00;

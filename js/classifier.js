@@ -1,41 +1,77 @@
-// инициализация кнопок и хоткеев
-function Init() {
-    let labels = document.getElementById("labels")
+function Classifier(labels) {
+    this.labelsBlock = document.getElementById("labels")
+    this.labels = []
+
+    for (let i = 0; i < labels.length; i++) {
+        this.labels.push({
+            label: labels[i].label,
+            color: labels[i].color,
+            state: labels[i].checked != undefined,
+            box: null,
+        })
+    }
+
+    this.InitShortKeys()
+    this.InitBoxes()
+    this.InitStyles()
+
+    let classifier = this
+    document.addEventListener('keydown', function(e) { classifier.KeyDown(e) }) // обработка нажатия кнопок
+}
+
+// добавление элемента в список
+Classifier.prototype.AddListItem = function(list, item) {
+    let li = document.createElement("li")
+    li.innerHTML = item
+    list.appendChild(li)
+}
+
+// инициализация горячих клавиш
+Classifier.prototype.InitShortKeys = function() {
     let keys = document.getElementById("keys")
+
+    for (let i = 0; i < this.labels.length && i < 9; i++)
+        this.AddListItem(keys, (i + 1) + " - " + this.labels[i].label)
+
+    this.AddListItem(keys, "0 - reset")
+    this.AddListItem(keys, "Enter - save")
+}
+
+// инициализация кнопок
+Classifier.prototype.InitBoxes = function() {
+    for (let i = 0; i < this.labels.length; i++) {
+        this.labels[i].box = document.createElement("div")
+
+        this.labels[i].box.className = "button checkbox"
+        this.labels[i].box.innerHTML = this.labels[i].label
+
+        let classifier = this
+
+        this.labels[i].box.onclick = function() {
+            if (!MULTICLASS)
+                classifier.Reset()
+
+            classifier.SetState(i, !classifier.labels[i].state);
+        }
+
+        this.labelsBlock.appendChild(this.labels[i].box)
+        this.labelsBlock.appendChild(document.createElement("br"))
+        this.SetState(i, this.labels[i].state)
+    }
+}
+
+Classifier.prototype.InitStyles = function() {
     let style = document.createElement('style');
 
-    for (let i = 0; i < LABELS.length; i++) {
-        let box = document.createElement("input")
-        box.type = "checkbox"
-        box.className = "checkbox checkbox-" + (i+1)
-        box.setAttribute("data", LABELS[i].label)
+    for (let i = 0; i < this.labels.length; i++) {
+        let color = this.labels[i].color
 
-        box.onclick = function() {
-            if (!MULTICLASS) {
-                Reset()
-                this.checked = true;
-            }
-        }
+        if (color == undefined || color == "")
+            color = "#ffbc00"
 
-        if (LABELS[i].checked != undefined) {
-            if (!MULTICLASS)
-                Reset()
+        let css = ".checkbox-" + (i+1) + " { border-color: " + color + "; color: " + color + "}"
+        css += " .checkbox-" + (i+1) + ":hover { border-color: " + color + "; color: " + color + "}"
 
-            box.checked = true
-        }
-
-        labels.appendChild(box)
-        labels.appendChild(document.createElement("br"))
-
-        let li = document.createElement("li")
-        li.innerHTML = (i + 1) + " - " + LABELS[i].label
-        keys.appendChild(li)
-
-
-        if (LABELS[i].color == undefined)
-            continue
-
-        let css = ".checkbox-" + (i+1) + ":checked:after {border-color: " + LABELS[i].color + "; color: " + LABELS[i].color + "}"
         if (style.styleSheet) {
             style.styleSheet.cssText = css;
         } else {
@@ -43,55 +79,61 @@ function Init() {
         }
     }
 
-    let li = document.createElement("li")
-    li.innerHTML = "Enter - save"
-    keys.appendChild(li)
-
     document.getElementsByTagName('head')[0].appendChild(style);
 }
 
-// сброс всех выбранных классов
-function Reset() {
-    let labels = document.getElementsByClassName("checkbox")
+// установка значений заданной кнопке
+Classifier.prototype.SetState = function(index, state) {
+    this.labels[index].state = state
 
-    for (let i = 0; i < labels.length; i++)
-        labels[i].checked = false
+    if (state == false) {
+        this.labels[index].box.classList.remove("checkbox-" + (index + 1))
+    }
+    else {
+        this.labels[index].box.classList.remove("checkbox-" + (index + 1))
+        this.labels[index].box.classList.add("checkbox-" + (index + 1))
+    }
+}
+
+// сброс всех выбранных классов
+Classifier.prototype.Reset = function() {
+    for (let i = 0; i < this.labels.length; i++)
+        this.SetState(i, false)
+}
+
+// сохранение разметки
+Classifier.prototype.Save = function() {
+    let result = []
+
+    for (let i = 0; i < this.labels.length; i++)
+        if (this.labels[i].state)
+            result.push(this.labels[i].label)
+
+    if (!REQUIRE_CONFIRMATION || confirm("Saving: are you sure?"))
+        window.location.replace('/save?labels=' + result.join(";") + "&task_id=" + TASK_ID)
 }
 
 // обработка нажатия кнопок
-document.addEventListener('keydown', function(e) {
+Classifier.prototype.KeyDown = function(e) {
     if (e.key == "Enter") {
-        Save()
+        this.Save()
         return
     }
 
     let index = parseInt(e.key)
-    let labels = document.getElementsByClassName("checkbox")
-    
+
     if (isNaN(index))
         return
 
     if (index == 0) {
-        Reset()
+        this.Reset()
     }
-    else if (index <= labels.length) {
+    else if (index <= this.labels.length) {
         if (!MULTICLASS)
-            Reset()
+            this.Reset()
 
-        labels[index - 1].checked = !labels[index - 1].checked
+        this.SetState(index - 1, !this.labels[index - 1].state)
     }
 
     e.preventDefault()
-})
-
-function Save() {
-    let labels = document.getElementsByClassName("checkbox")
-    let result = []
-
-    for (let i = 0; i < labels.length; i++)
-        if (labels[i].checked)
-            result.push(LABELS[i].label)
-
-    if (!REQUIRE_CONFIRMATION || confirm("Saving: are you sure?"))
-        window.location.replace('/save?labels=' + result.join(";") + "&task_id=" + TASK_ID)
 }

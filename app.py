@@ -55,8 +55,8 @@ def make_classifier(task_id, title, image, default_label, multiclass):
                 <div class="classifier-controls">
                     <div id="labels"></div>
 
-                    <div class="button" onclick=Reset()>Сбросить</div><br>
-                    <div class="button" onclick=Save()>Сохранить</div>
+                    <div class="button" onclick=classifier.Reset()>Сбросить</div><br>
+                    <div class="button" onclick=classifier.Save()>Сохранить</div>
 
                     <div class="text">
                         <b>Hot keys:</b><br>
@@ -70,13 +70,16 @@ def make_classifier(task_id, title, image, default_label, multiclass):
                 </div>
             </div>
 
-            <script src="js/classifier.js?v=18"></script>
+            <script src="js/classifier.js?v=19"></script>
             <script> 
                 const MULTICLASS = {multiclass};
                 const TASK_ID = {task_id};
                 const REQUIRE_CONFIRMATION = {confirm_required};
-                const LABELS = [{labels}]
-                Init()
+                const LABELS = [
+                    {labels}
+                ]
+
+                let classifier = new Classifier(LABELS)
             </script>
         </body>
         </html>
@@ -86,7 +89,7 @@ def make_classifier(task_id, title, image, default_label, multiclass):
         multiclass=("true" if multiclass else "false"),
         task_id=task_id,
         confirm_required=("true" if config["confirm_required"] else "false"),
-        labels=",".join(labels))
+        labels=",\n".join(labels))
 
 def get_by_key_list(task, keys):
     value = task
