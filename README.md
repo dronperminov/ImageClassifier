@@ -76,6 +76,11 @@ Result tasks saved to ```output_path``` output path defined in ```config.json```
 
 ```sampling``` — sampling mode for getting task (random or sequential)
 
+## Colors format of labels
+* hex format — ```#ff00ff```
+* rgb format — ```rgb(255, 0, 0)```
+* hsl format — ```hsl(70, 80%, 50%)```
+
 ## Format of tasks.json
 ```json
 {
