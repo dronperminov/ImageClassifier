@@ -31,7 +31,9 @@ def css_file(filename):
 def make_classifier(task_id, title, image, default_label, multiclass):
     labels = []
 
-    for label, color in config["labels"].items():
+    for label_info in config["labels"]:
+        label = label_info["label"]
+        color = label_info.get("color", "")
         label_str = "label: \"" + label + "\""
         color_str = "" if color == "" else ", color: \"" + color + "\""
         checked_str = ", checked: true" if label == default_label else ""
