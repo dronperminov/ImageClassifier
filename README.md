@@ -1,6 +1,22 @@
 # ImageClassifier
 Implementation of images classifier in JS and Flask
 
+## How to start labeling
+* Move your images to ```images``` directory
+* Fill file with task (format description down)
+* Change ```config.json``` (change labels, image_key, default_label_key and etc options)
+* Open terminal and run ```python app.py```
+* Go to ```localhost:port```, where port is described in config.json
+
+## How to label
+Click on button(s) and then click to ```save``` button or use short ```keys 1-9``` for first labels and press ```Enter```
+
+## How to reset current labeling
+Press button ```reset``` or ```0 key```
+
+## How to get result
+Result tasks saved to ```output_path``` output path defined in ```config.json```. All task from ```input_path``` copied to ```output_path``` with one addition key — ```result_key```
+
 ## Config example
 ```json
 {
