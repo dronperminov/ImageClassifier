@@ -52,7 +52,7 @@ def make_classifier(task_id, title, image, default_label, multiclass):
         <html>
         <head>
             <title>{title}</title>
-            <link rel="stylesheet" type="text/css" href="css/styles.css?v=2">
+            <link rel="stylesheet" type="text/css" href="css/styles.css?v=3">
             <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
         </head>
         <body>
@@ -62,10 +62,12 @@ def make_classifier(task_id, title, image, default_label, multiclass):
                 </div>
 
                 <div class="classifier-controls">
-                    <div id="labels"></div>
+                    <div class="classifier-buttons">
+                        <div id="labels"></div>
 
-                    <div class="button" onclick=classifier.Reset()>Сбросить</div><br>
-                    <div class="button" onclick=classifier.Save()>Сохранить</div>
+                        <div class="button" onclick=classifier.Reset()>Сбросить</div>
+                        <div class="button" onclick=classifier.Save()>Сохранить</div>
+                    </div>
 
                     <div class="text">
                         <b>Hot keys:</b><br>
@@ -79,7 +81,7 @@ def make_classifier(task_id, title, image, default_label, multiclass):
                 </div>
             </div>
 
-            <script src="js/classifier.js?v=20"></script>
+            <script src="js/classifier.js?v=21"></script>
             <script> 
                 const MULTICLASS = {multiclass};
                 const TASK_ID = {task_id};

@@ -5,7 +5,7 @@ function Classifier(labels) {
     for (let i = 0; i < labels.length; i++) {
         this.labels.push({
             label: labels[i].label,
-            html: labels[i].html,
+            html: labels[i].html == undefined ? labels[i].label : labels[i].html,
             color: labels[i].color,
             state: labels[i].checked != undefined,
             box: null,
@@ -56,7 +56,6 @@ Classifier.prototype.InitBoxes = function() {
         }
 
         this.labelsBlock.appendChild(this.labels[i].box)
-        this.labelsBlock.appendChild(document.createElement("br"))
         this.SetState(i, this.labels[i].state)
     }
 }
