@@ -11,15 +11,14 @@ with open("config.json", encoding='utf-8') as f:
     config = json.load(f)
 
 app = Flask(__name__)
-    
-app.config['IMG_FOLDER'] = 'images' # папка с изобрвжениями
+
 app.config['JS_FOLDER'] = 'js' # папка с js кодом
 app.config['CSS_FOLDER'] = 'css' # папка со стилями
 app.config['FONTS_FOLDER'] = 'fonts' # папка со стилями
 
-@app.route('/images/<filename>')
+@app.route('/<path:filename>')
 def image_file(filename):
-    return send_from_directory(app.config['IMG_FOLDER'], filename)
+    return send_from_directory(".", filename)
 
 @app.route('/js/<filename>')
 def js_file(filename):
