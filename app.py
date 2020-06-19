@@ -3,6 +3,7 @@ import os.path
 import random
 import json
 import cv2
+import hashlib
 
 from flask import Flask
 from flask import request, send_file, redirect, send_from_directory
@@ -64,6 +65,10 @@ def get_completed_tasks():
 
     return completed_tasks
 
+def get_md5(filename):
+    with open(filename, 'rb') as f:
+        return hashlib.md5(f.read()).hexdigest()
+
 def save_completed_tasks(completed_tasks):
     with open(config["output_path"], 'w', encoding='utf-8') as f:
         json.dump(completed_tasks, f, indent=2, ensure_ascii=False)
@@ -91,7 +96,7 @@ def make_classifier(task_id, title, image, default_label, multiclass):
         <html>
         <head>
             <title>{title}</title>
-            <link rel="stylesheet" type="text/css" href="css/styles.css?v=4">
+            <link rel="stylesheet" type="text/css" href="css/styles.css?v={style}">
             <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
         </head>
         <body>
@@ -125,7 +130,7 @@ def make_classifier(task_id, title, image, default_label, multiclass):
                 {labeled}
             </div>
 
-            <script src="js/classifier.js?v=21"></script>
+            <script src="js/classifier.js?v={js}"></script>
             <script> 
                 const MULTICLASS = {multiclass};
                 const TASK_ID = {task_id};
@@ -140,6 +145,8 @@ def make_classifier(task_id, title, image, default_label, multiclass):
         </html>
     '''.format(title=title,
         image=image,
+        js=get_md5(app.config["JS_FOLDER"] + "/classifier.js"),
+        style=get_md5(app.config["CSS_FOLDER"] + "/styles.css"),
         instruction=config["instruction"],
         labeled=labeled,
         previous=previous,
@@ -166,7 +173,7 @@ def make_labeled(labeled_tasks):
         <html>
         <head>
             <title>Labeled tasks</title>
-            <link rel="stylesheet" type="text/css" href="css/styles.css?v=4">
+            <link rel="stylesheet" type="text/css" href="css/styles.css?v={style}">
             <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
         </head>
         <body>
@@ -181,7 +188,11 @@ def make_labeled(labeled_tasks):
             <br>
             <a href="/">Go to label page</a>
         </body>
-    </html>'''.format(table=table)
+    </html>
+    '''.format(
+        style=get_md5(app.config["CSS_FOLDER"] + "/styles.css"),
+        table=table
+        )
 
 @app.route('/', methods=['GET'])
 def classify_image():
