@@ -8,30 +8,37 @@ import hashlib
 from flask import Flask
 from flask import request, send_file, redirect, send_from_directory
 
-with open("config.json", encoding='utf-8') as f:
+with open(os.path.join(os.path.dirname(__file__), "config.json"), encoding='utf-8') as f:
     config = json.load(f)
 
 app = Flask(__name__)
+host = "0.0.0.0"
+port = config["port"]
 
-app.config['JS_FOLDER'] = 'js' # папка с js кодом
-app.config['CSS_FOLDER'] = 'css' # папка со стилями
-app.config['FONTS_FOLDER'] = 'fonts' # папка со стилями
+app.config['JS_FOLDER'] = 'js'  # папка с js кодом
+app.config['CSS_FOLDER'] = 'css'  # папка со стилями
+app.config['FONTS_FOLDER'] = 'fonts'  # папка со стилями
+
 
 @app.route('/<path:filename>')
 def image_file(filename):
     return send_from_directory(".", filename)
 
+
 @app.route('/js/<filename>')
 def js_file(filename):
     return send_from_directory(app.config['JS_FOLDER'], filename)
+
 
 @app.route('/css/<filename>')
 def css_file(filename):
     return send_from_directory(app.config['CSS_FOLDER'], filename)
 
+
 @app.route('/fonts/<filename>')
 def font_file(filename):
     return send_from_directory(app.config['FONTS_FOLDER'], filename)
+
 
 def get_by_key_list(task, keys):
     value = task
@@ -41,8 +48,9 @@ def get_by_key_list(task, keys):
 
     return value
 
+
 def read_tasks():
-    with open(config["input_path"], "r", encoding='utf-8') as f:
+    with open(os.path.abspath(config["input_path"]), "r", encoding='utf-8') as f:
         tasks = json.load(f)
 
     completed_tasks = get_completed_tasks()
@@ -55,9 +63,10 @@ def read_tasks():
         img_name = get_by_key_list(task, config["image_key"])
         default_label = get_by_key_list(task, config["default_label_key"])
 
-        available_tasks.append({ "id": task_id, "img": img_name, "label": default_label })
+        available_tasks.append({"id": task_id, "img": img_name, "label": default_label})
 
     return available_tasks
+
 
 def get_completed_tasks():
     with open(config["output_path"], 'r', encoding='utf-8') as f:
@@ -65,13 +74,16 @@ def get_completed_tasks():
 
     return completed_tasks
 
+
 def get_md5(filename):
     with open(filename, 'rb') as f:
         return hashlib.md5(f.read()).hexdigest()
 
+
 def save_completed_tasks(completed_tasks):
     with open(config["output_path"], 'w', encoding='utf-8') as f:
         json.dump(completed_tasks, f, indent=2, ensure_ascii=False)
+
 
 def make_classifier(task_id, title, image, default_label, multiclass):
     labels = []
@@ -89,7 +101,9 @@ def make_classifier(task_id, title, image, default_label, multiclass):
 
     completed_tasks = get_completed_tasks()
     labeled = "" if len(completed_tasks) == 0 else "<a href='/labeled'>Labeled tasks</a>"
-    previous = "" if len(completed_tasks) == 0 else '''<div class='button' onclick='window.location.replace("/restore?task_id=''' + list(completed_tasks.keys())[-1] + '''")'>Восстановить прошлую</div>'''
+    previous = "" if len(
+        completed_tasks) == 0 else '''<div class='button' onclick='window.location.replace("/restore?task_id=''' + \
+                                   list(completed_tasks.keys())[-1] + '''")'>Восстановить прошлую</div>'''
 
     return '''
         <!DOCTYPE html>
@@ -144,16 +158,17 @@ def make_classifier(task_id, title, image, default_label, multiclass):
         </body>
         </html>
     '''.format(title=title,
-        image=image,
-        js=get_md5(app.config["JS_FOLDER"] + "/classifier.js"),
-        style=get_md5(app.config["CSS_FOLDER"] + "/styles.css"),
-        instruction=config["instruction"],
-        labeled=labeled,
-        previous=previous,
-        multiclass=("true" if multiclass else "false"),
-        task_id=task_id,
-        confirm_required=("true" if config["confirm_required"] else "false"),
-        labels=",\n".join(labels))
+               image=image,
+               js=get_md5(app.config["JS_FOLDER"] + "/classifier.js"),
+               style=get_md5(app.config["CSS_FOLDER"] + "/styles.css"),
+               instruction=config["instruction"],
+               labeled=labeled,
+               previous=previous,
+               multiclass=("true" if multiclass else "false"),
+               task_id=task_id,
+               confirm_required=("true" if config["confirm_required"] else "false"),
+               labels=",\n".join(labels))
+
 
 def make_labeled(labeled_tasks):
     table = ''
@@ -192,38 +207,44 @@ def make_labeled(labeled_tasks):
     '''.format(
         style=get_md5(app.config["CSS_FOLDER"] + "/styles.css"),
         table=table
-        )
+    )
+
 
 @app.route('/', methods=['GET'])
 def classify_image():
     available_tasks = read_tasks()
 
-    if len(available_tasks) == 0: # если их нет, то и размечать нечего
-        return "Размечать нечего"
+    if len(available_tasks) == 0:  # если их нет, то и размечать нечего
+        return '''
+        <p>Размечать нечего</p>
+        <h1><a href="http://{host}:{port}/get_results">Результаты</a></h1>
+        '''.format(host=host, port=port)
 
     if config["sampling"] == "random":
         task = random.choice(available_tasks)
-    else: #  config["sampling"] == "sequential":
+    else:  # config["sampling"] == "sequential":
         task = available_tasks[0]
 
     title = "Lost: " + str(len(available_tasks)) + " | " + config["title"]
     return make_classifier(task["id"], title, task["img"], task["label"], config["multiclass"])
 
+
 @app.route('/save')
 def save_file():
     task_id = request.args.get('task_id')
     labels = request.args.get('labels')
-    
+
     with open(config["input_path"], "r", encoding='utf-8') as f:
         tasks = json.load(f)
 
     completed_tasks = get_completed_tasks()
-    completed_tasks[task_id] = tasks[task_id] # добавляем выполненное задание
+    completed_tasks[task_id] = tasks[task_id]  # добавляем выполненное задание
     completed_tasks[task_id][config["result_key"]] = labels.split(';')
 
     save_completed_tasks(completed_tasks)
 
-    return redirect("/") # возвращаем на страницу разметки
+    return redirect("/")  # возвращаем на страницу разметки
+
 
 @app.route('/labeled')
 def view_labeled():
@@ -233,6 +254,7 @@ def view_labeled():
         return "No tasks have been labeled, <a href='/'>go to label page</a>:"
 
     return make_labeled(completed_tasks)
+
 
 @app.route('/restore')
 def restore_task():
@@ -244,9 +266,20 @@ def restore_task():
 
     return redirect(request.referrer)
 
+
+@app.route('/get_results')
+def get_results():
+    result_file = config["output_path"]
+    if not os.path.isfile(result_file):
+        return "Nothing to download!"
+    directory = os.path.dirname(result_file)
+    filename = os.path.basename(result_file)
+    return send_from_directory(directory, filename, as_attachment=True)
+
+
 if __name__ == '__main__':
     if not os.path.exists(config["output_path"]):
         with open(config["output_path"], "w", encoding='utf-8') as f:
-            f.write("{\n}");
+            f.write("{\n}")
 
-    app.run(debug=config["debug"], port=config["port"])
+    app.run(debug=config["debug"], host=host,  port=port)
