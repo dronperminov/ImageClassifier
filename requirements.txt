@@ -1,3 +1,2 @@
-flask
-flask_restful
-opencv-python
+Flask==1.1.2
+Flask-RESTful==0.3.8

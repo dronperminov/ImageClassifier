@@ -2,7 +2,6 @@ import os
 import os.path
 import random
 import json
-import cv2
 import hashlib
 
 from flask import Flask
