@@ -3,6 +3,8 @@ import os.path
 import random
 import json
 import hashlib
+import time
+import uuid
 
 from flask import Flask
 from flask import request, send_file, redirect, send_from_directory
@@ -216,8 +218,8 @@ def classify_image():
     if len(available_tasks) == 0:  # если их нет, то и размечать нечего
         return '''
         <p>Размечать нечего</p>
-        <h1><a href="http://{host}:{port}/get_results">Результаты</a></h1>
-        '''.format(host=host, port=port)
+        <h1><a href="http://{host}:{port}/get_results/{uid}">Результаты</a></h1>
+        '''.format(host=host, port=port, uid=uuid.uuid1())
 
     if config["sampling"] == "random":
         task = random.choice(available_tasks)
@@ -266,8 +268,8 @@ def restore_task():
     return redirect(request.referrer)
 
 
-@app.route('/get_results')
-def get_results():
+@app.route('/get_results/<uid>')
+def get_results(uid=None):
     result_file = config["output_path"]
     if not os.path.isfile(result_file):
         return "Nothing to download!"
