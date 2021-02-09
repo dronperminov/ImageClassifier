@@ -9,7 +9,8 @@
 }
 
 .classifier-img img {
-    max-width: 100%
+    max-width: 100%;
+    max-height: calc(100vh - 20px);
 }
 
 .classifier-controls {
