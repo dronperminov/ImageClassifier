@@ -185,3 +185,33 @@ Result tasks saved to ```output_path``` output path defined in ```config.json```
   },
 }
 ```
+
+## Instruction for tasks
+Add to config key `task_instruction_key` with path to tasks instruction key, for example, `task_instruction_key: ["instruction"]`
+Add to tasks with instuction selected key and run classifier:
+
+```json
+{
+  "task_id": {
+    "image_key": "image_path",
+    "default_label_key": "label",
+    "task_instruction_key": ["instruction"],
+  }
+}
+```
+
+```json
+{
+  "0": {
+    "task_path": "images/img_000.jpg",
+    "id": 0,
+    "label": "raw_text",
+    "instruction": "instruction for task 0 (<b>hypertext</b>)",
+  },
+  "1": {
+    "task_path": "images/img_001.jpg",
+    "label": "raw_text",
+    "id": 1,
+  },
+}
+```
