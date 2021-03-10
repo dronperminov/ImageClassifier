@@ -2,6 +2,7 @@
   "0": {
     "task_path": "images/img_000.jpg",
     "id": 0,
+    "instruction": "instruction for task 0 (<b>hypertext</b>)",
     "predictions": [
       {
         "result": [

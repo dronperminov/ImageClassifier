@@ -39,6 +39,7 @@ Result tasks saved to ```output_path``` output path defined in ```config.json```
   "input_path": "tasks.json",
   "image_key": ["task_path"],
   "default_label_key": ["data", "bbox", "label"],
+  "task_instruction_key": ["instruction"],
   "result_key": "labeled",
   "output_path": "labeled_tasks.json",
   "instruction": "Type some <b>hypertext</b> for label experts!",
@@ -63,6 +64,8 @@ Result tasks saved to ```output_path``` output path defined in ```config.json```
 ```image_key``` — key for get path to image in tasks file (list of sequential keys)
 
 ```default_label_key``` — key for get default label (list of sequential keys)
+
+```task_instruction_key``` — key for get instruction for task (list of sequential keys)
 
 ```result_key``` — key for saving results
 
@@ -106,6 +109,7 @@ Result tasks saved to ```output_path``` output path defined in ```config.json```
   "0": {
     "task_path": "images/img_000.jpg",
     "id": 0,
+    "instruction": "instruction for task 0 (<b>hypertext</b>)",
     "predictions": [
       {
         "result": [

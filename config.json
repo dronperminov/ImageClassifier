@@ -18,6 +18,7 @@
   "input_path": "tasks.json",
   "image_key": ["task_path"],
   "default_label_key": ["data", "bbox", "label"],
+  "task_instruction_key": ["instruction"],
   "result_key": "labeled",
   "output_path": "labeled_tasks.json",
   "instruction": "Type some <b>hypertext</b> for label experts!",
