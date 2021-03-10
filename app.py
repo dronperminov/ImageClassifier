@@ -64,7 +64,15 @@ def read_tasks():
         img_name = get_by_key_list(task, config["image_key"])
         default_label = get_by_key_list(task, config["default_label_key"])
 
-        available_tasks.append({"id": task_id, "img": img_name, "label": default_label})
+        instruction = ""
+
+        if "task_instruction_key" in config:
+            try:
+                instruction = "<h3>Task instruction</h3>" + get_by_key_list(task, config["task_instruction_key"])
+            except:
+                pass
+
+        available_tasks.append({"id": task_id, "img": img_name, "label": default_label, "instruction": instruction})
 
     return available_tasks
 
@@ -86,7 +94,7 @@ def save_completed_tasks(completed_tasks):
         json.dump(completed_tasks, f, indent=2, ensure_ascii=False)
 
 
-def make_classifier(task_id, title, image, default_label, multiclass):
+def make_classifier(task_id, title, image, default_label, multiclass, task_instruction):
     labels = []
 
     for label_info in config["labels"]:
@@ -162,7 +170,7 @@ def make_classifier(task_id, title, image, default_label, multiclass):
                image=image,
                js=get_md5(app.config["JS_FOLDER"] + "/classifier.js"),
                style=get_md5(app.config["CSS_FOLDER"] + "/styles.css"),
-               instruction=config["instruction"],
+               instruction=config["instruction"] + task_instruction,
                labeled=labeled,
                previous=previous,
                multiclass=("true" if multiclass else "false"),
@@ -227,7 +235,7 @@ def classify_image():
         task = available_tasks[0]
 
     title = "Lost: " + str(len(available_tasks)) + " | " + config["title"]
-    return make_classifier(task["id"], title, task["img"], task["label"], config["multiclass"])
+    return make_classifier(task["id"], title, task["img"], task["label"], config["multiclass"], task.get("instruction", ""))
 
 
 @app.route('/save')
