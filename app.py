@@ -226,8 +226,8 @@ def classify_image():
     if len(available_tasks) == 0:  # если их нет, то и размечать нечего
         return '''
         <p>Размечать нечего</p>
-        <h1><a href="http://{host}:{port}/get_results/{uid}">Результаты</a></h1>
-        '''.format(host=host, port=port, uid=uuid.uuid1())
+        <h1><a href="/get_results/{uid}">Результаты</a></h1>
+        '''.format(uid=uuid.uuid1())
 
     if config["sampling"] == "random":
         task = random.choice(available_tasks)
