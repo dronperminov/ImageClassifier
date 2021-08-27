@@ -3,22 +3,13 @@ import os.path
 import random
 import json
 import hashlib
-import time
 import uuid
 
 from flask import Flask
-from flask import request, send_file, redirect, send_from_directory
+from flask import request, redirect, send_from_directory
 
-with open(os.path.join(os.path.dirname(__file__), "config.json"), encoding='utf-8') as f:
-    config = json.load(f)
 
 app = Flask(__name__)
-host = "0.0.0.0"
-port = config["port"]
-
-app.config['JS_FOLDER'] = 'js'  # папка с js кодом
-app.config['CSS_FOLDER'] = 'css'  # папка со стилями
-app.config['FONTS_FOLDER'] = 'fonts'  # папка со стилями
 
 
 @app.route('/<path:filename>')
@@ -229,10 +220,12 @@ def classify_image():
         <h1><a href="/get_results/{uid}">Результаты</a></h1>
         '''.format(uid=uuid.uuid1())
 
-    if config["sampling"] == "random":
+    if config["sampling"] in ["random", "shuffle"]:
         task = random.choice(available_tasks)
-    else:  # config["sampling"] == "sequential":
+    elif config["sampling"] == "sequential":
         task = available_tasks[0]
+    else:
+        raise ValueError("Invalid sampling mode")
 
     title = "Lost: " + str(len(available_tasks)) + " | " + config["title"]
     return make_classifier(task["id"], title, task["img"], task["label"], config["multiclass"], task.get("instruction", ""))
@@ -286,9 +279,55 @@ def get_results(uid=None):
     return send_from_directory(directory, filename, as_attachment=True)
 
 
-if __name__ == '__main__':
-    if not os.path.exists(config["output_path"]):
-        with open(config["output_path"], "w", encoding='utf-8') as f:
-            f.write("{\n}")
+def check_key(config: dict, key: str, default_value=None):
+    if key not in config:
+        if default_value is None:
+            raise ValueError('{} is not set'.format(key))
 
-    app.run(debug=config["debug"], host=host,  port=port)
+        config[key] = default_value
+        print('Warning: "{0}" is not set. Changed to "{1}"'.format(key, default_value))
+
+
+def get_config(filename: str):
+    with open(os.path.join(os.path.dirname(__file__), filename), encoding='utf-8') as f:
+        config = json.load(f)
+
+    check_key(config, 'title', '')
+    check_key(config, 'port', '5000')
+    check_key(config, 'output_path', 'labeled_tasks.json')
+    check_key(config, 'input_path', 'tasks.json')
+    check_key(config, 'labels')
+    check_key(config, 'multiclass', False)
+    check_key(config, 'result_key', 'labeled')
+    check_key(config, 'sampling', 'sequential')
+
+    if config['sampling'] not in ['sequential', 'random', 'shuffle']:
+        raise ValueError('Invalid "sampling" mode: {0}'.format(config['sampling']))
+
+    for label in config['labels']:
+        if 'label' not in label:
+            raise ValueError('All labels must have "label" key')
+
+    if len(set(label['label'] for label in config['labels'])) != len(config['labels']):
+        raise ValueError('Labels are not unique')
+
+    return config
+
+
+if __name__ == '__main__':
+    try:
+        config = get_config('config.json')
+        host = "0.0.0.0"
+        port = config["port"]
+
+        app.config['JS_FOLDER'] = 'js'  # папка с js кодом
+        app.config['CSS_FOLDER'] = 'css'  # папка со стилями
+        app.config['FONTS_FOLDER'] = 'fonts'  # папка со шрифтами
+
+        if not os.path.exists(config["output_path"]):
+            with open(config["output_path"], "w", encoding='utf-8') as f:
+                f.write("{\n}")
+
+        app.run(debug=config.get("debug", False), host=host,  port=port)
+    except ValueError as error:
+        print(error)
