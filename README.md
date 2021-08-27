@@ -77,7 +77,7 @@ Result tasks saved to ```output_path``` output path defined in ```config.json```
 
 ```confirm_required``` — require confirmation for save or not
 
-```sampling``` — sampling mode for getting task (random or sequential)
+```sampling``` — sampling mode for getting task (`random` or `sequential`)
 
 ## Labels item format
 * label — name of class (not HTML)
