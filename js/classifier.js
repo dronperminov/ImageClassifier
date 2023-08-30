@@ -69,8 +69,8 @@ Classifier.prototype.InitStyles = function() {
         if (color == undefined || color == "")
             color = "#ffbc00"
 
-        let css = ".checkbox-" + (i+1) + " { border-color: " + color + "; color: " + color + "}"
-        css += " .checkbox-" + (i+1) + ":hover { border-color: " + color + "; color: " + color + "}"
+        let css = ".checkbox-" + (i+1) + " { color: #fff; background: " + color + "}"
+        css += " .checkbox-" + (i+1) + ":hover { border-color: " + color + "; color: #fff; background: " + color + "}"
 
         if (style.styleSheet) {
             style.styleSheet.cssText = css;

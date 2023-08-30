@@ -88,6 +88,9 @@ def save_completed_tasks(completed_tasks):
 def make_classifier(task_id, title, image, default_label, multiclass, task_instruction):
     labels = []
 
+    if isinstance(default_label, str):
+        default_label = [default_label]
+
     for label_info in config["labels"]:
         label = label_info["label"]
         color = label_info.get("color", "")
@@ -96,7 +99,7 @@ def make_classifier(task_id, title, image, default_label, multiclass, task_instr
         label_str = "label: \"" + label + "\""
         color_str = "" if color == "" else ", color: \"" + color + "\""
         html_str = "" if html == "" else ", html: \"" + html + "\""
-        checked_str = ", checked: true" if label == default_label else ""
+        checked_str = ", checked: true" if label in default_label else ""
         labels.append("{" + label_str + color_str + checked_str + html_str + " }")
 
     completed_tasks = get_completed_tasks()
