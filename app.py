@@ -106,7 +106,7 @@ def make_classifier(task_id, title, image, default_label, multiclass, task_instr
     labeled = "" if len(completed_tasks) == 0 else "<a href='/labeled'>Labeled tasks</a>"
     previous = "" if len(
         completed_tasks) == 0 else '''<div class='button' onclick='window.location.replace("/restore?task_id=''' + \
-                                   list(completed_tasks.keys())[-1] + '''")'>Восстановить прошлую</div>'''
+                                   list(completed_tasks.keys())[-1] + '''")'>Restore previous</div>'''
 
     return '''
         <!DOCTYPE html>
@@ -126,8 +126,8 @@ def make_classifier(task_id, title, image, default_label, multiclass, task_instr
                     <div class="classifier-buttons">
                         <div id="labels"></div>
 
-                        <div class="button" onclick=classifier.Reset()>Сбросить</div>
-                        <div class="button" onclick=classifier.Save()>Сохранить</div>
+                        <div class="button" onclick=classifier.Reset()>Reset</div>
+                        <div class="button" onclick=classifier.Save()>Save</div>
                         {previous}
                     </div>
 
@@ -219,8 +219,8 @@ def classify_image():
 
     if len(available_tasks) == 0:  # если их нет, то и размечать нечего
         return '''
-        <p>Размечать нечего</p>
-        <h1><a href="/get_results/{uid}">Результаты</a></h1>
+        <p>There is nothing for labeling</p>
+        <h1><a href="/get_results/{uid}">Results</a></h1>
         '''.format(uid=uuid.uuid1())
 
     if config["sampling"] in ["random", "shuffle"]:
